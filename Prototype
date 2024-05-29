@@ -31,17 +31,14 @@ public:
         
         double splitAmount = amount / (n - 1);
         
-        // The payer's balance is decreased by the total amount.
         payment[payer] -= amount;
         
-        // Each friend (excluding the payer) gets their share added.
         for (const string& friendName : friendsList) {
             if (friendName != payer) {
                 payment[friendName] += splitAmount;
             }
         }
         
-        // Adjusting payee's balance to reflect their part of the bill.
         payment[payee] -= splitAmount;
         
         cout << "Bill recorded successfully.\n";
