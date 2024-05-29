@@ -1,67 +1,22 @@
+#ifndef DSA_H
+#define DSA_H
+
 #include <iostream>
 #include <unordered_map>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 class Bill {
-    unordered_map<string, double> payment;
-    vector<string> friendsList;
 public:
-    void calculate() {
-        string payer, payee;
-        double amount;
-        int n;
-        
-        cout << "Enter the number of friends: ";
-        cin >> n;
-        
-        friendsList.resize(n);
-        for (int i = 0; i < n; ++i) {
-            cout << "Enter the name of friend " << i + 1 << ": ";
-            cin >> friendsList[i];
-        }
-        
-        cout << "Enter the name of payer: ";
-        cin >> payer;
-        cout << "Enter the name of payee: ";
-        cin >> payee;
-        cout << "Enter the amount of total bill: ";
-        cin >> amount;
-        
-        double splitAmount = amount / (n - 1);
-        
-        payment[payer] -= amount;
-        
-        for (const string& friendName : friendsList) {
-            if (friendName != payer) {
-                payment[friendName] += splitAmount;
-            }
-        }
-        
-        payment[payee] -= splitAmount;
-        
-        cout << "Bill recorded successfully.\n";
-    }
-    
-    void display() {
-        cout << "Balance report:\n";
-        for (const auto& p : payment) {
-            if (p.second > 0) {
-                cout << p.first << " needs to collect " << p.second << " rupees.\n";
-            } else if (p.second < 0) {
-                cout << p.first << " needs to pay " << -p.second << " rupees.\n";
-            } else {
-                cout << p.first << " has no balance.\n";
-            }
-        }
-    }
+    unordered_map<string, double> p1;
+    vector<string> names; 
+
+    void add(const string &name);
+    void calculate(const string &payer, double amount, vector<string> &Payeee);
+    void display() const;
 };
 
-int main() {
-    Bill bill;
-    bill.calculate();
-    bill.display();
-    return 0;
-}
+#endif
 
