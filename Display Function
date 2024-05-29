@@ -1,0 +1,21 @@
+ void Bill::display()const
+{
+     cout<<" \n Everyone needs to pay the amount as following:\n "<<endl;
+       for(auto f= p1.begin(); f!=p1.end() ; f++)
+  {
+           string friends= f->first;
+                double balance= f->second;
+
+            if(balance>0) 
+     {
+                cout<<friends<<" =  needs to collect rupees:\n "<<balance<<endl;
+            }
+            else if(balance<0) {
+                cout<<friends<<"  =  needs to pay rupees:\n "<<-balance<<endl;
+            }
+            else {
+                cout<<friends<<" = need to pay or collect no balance.\n"<<endl;
+            }
+  }
+      
+}
